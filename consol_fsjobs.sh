@@ -2,7 +2,7 @@
 
 temp1=($(squeue))
 
-cmd1="sbatch --dependency=afterany:"
+cmd1="sbatch --dependency=afterok:"
 
 counter1=0
 for i in "${temp1[@]}"; do
@@ -14,7 +14,7 @@ for i in "${temp1[@]}"; do
 done
 
 cmd1=${cmd1::-1}
-cmd1="${cmd1} /data/src/PyHipp/ec2snapshot.sh"
+cmd1="${cmd1} /data/src/PyHipp/fsall-slurm.sh"
 
 echo $cmd1
 eval $cmd1
