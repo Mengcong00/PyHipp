@@ -12,6 +12,13 @@
 #SBATCH -e rplhps-slurm.%N.%j.err # STDERR
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
+/data/miniconda3/bin/conda init
+source ~/.bashrc
+envarg=`/data/src/PyHipp/PyHipp/envlist.py`
+conda activate $envarg
 
 python -u -c "import PyHipp as pyh; pyh.RPLHighPass(saveLevel = 1); from PyHipp import mountain_batch; mountain_batch.mountain_batch(); from PyHipp import export_mountain_cells; export_mountain_cells.export_mountain_cells();"
+
+conda deactivate 
+/data/src/PyHipp/PyHipp/envlist.py $envarg
 
