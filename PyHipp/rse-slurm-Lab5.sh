@@ -10,6 +10,8 @@
 ## /SBATCH -p general # partition (queue)
 #SBATCH -o rse-slurm.%N.%j.out # STDOUT
 #SBATCH -e rse-slurm.%N.%j.err # STDERR
+source ~/.bashrc
+conda activate env1
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 

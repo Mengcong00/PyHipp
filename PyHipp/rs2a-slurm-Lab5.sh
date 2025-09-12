@@ -11,6 +11,8 @@
 ## /SBATCH -p general # partition (queue)
 #SBATCH -o rs2a-slurm.%N.%j.out # STDOUT
 #SBATCH -e rs2a-slurm.%N.%j.err # STDERR
+source ~/.bashrc
+conda activate env1
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 python -u -c "import PyHipp as pyh; \

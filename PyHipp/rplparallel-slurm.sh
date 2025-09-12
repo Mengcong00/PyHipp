@@ -11,6 +11,8 @@
 ## /SBATCH -p general # partition (queue)
 #SBATCH -o rplpl-slurm.%N.%j.out # STDOUT
 #SBATCH -e rplpl-slurm.%N.%j.err # STDERR
+source ~/.bashrc
+conda activate env1
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 python -u -c "import PyHipp as pyh; \
@@ -28,5 +30,5 @@ pyh.raycast(1); \
 print(time.localtime()); \
 print(time.time()-t0);"
 
-aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:012345678901:awsnotify --message "RPLParallelJobDone"
+# aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:012345678901:awsnotify --message "RPLParallelJobDone"
 
